@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { TimerService } from './timer.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { TimerService } from './timer.service';
   styleUrls: ['./timer.component.scss'],
   providers: [TimerService],
 })
-export class TimerComponent implements OnInit {
+export class TimerComponent {
   @HostBinding('class.running') running = false;
   @HostBinding('class.added-flash') addedFlash = false;
 
@@ -23,8 +23,4 @@ export class TimerComponent implements OnInit {
       }, 100);
     });
   }
-
-  ngOnInit() {
-  }
-
 }

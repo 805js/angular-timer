@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TimerService } from '../timer.service';
 
 @Component({
@@ -6,14 +6,11 @@ import { TimerService } from '../timer.service';
   templateUrl: './timer-marked-list.component.html',
   styleUrls: ['./timer-marked-list.component.scss']
 })
-export class TimerMarkedListComponent implements OnInit {
+export class TimerMarkedListComponent {
   timerList: Set<number>;
   constructor(timerService: TimerService) {
     timerService.recordedTimeStream.subscribe(change => {
       this.timerList = change;
     });
   }
-
-  ngOnInit() {  }
-
 }

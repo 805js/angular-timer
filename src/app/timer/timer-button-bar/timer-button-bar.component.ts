@@ -1,17 +1,14 @@
 import { TimerService } from './../timer.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-timer-button-bar',
   templateUrl: './timer-button-bar.component.html',
   styleUrls: ['./timer-button-bar.component.scss']
 })
-export class TimerButtonBarComponent implements OnInit {
+export class TimerButtonBarComponent {
 
   constructor(private timerService: TimerService) { }
-
-  ngOnInit() {
-  }
 
   startTimer(): void {
     this.timerService.startTimer();
@@ -26,8 +23,6 @@ export class TimerButtonBarComponent implements OnInit {
   }
 
   resetTimer(): void {
-    console.log('button reset');
     this.timerService.resetTimer();
   }
-
 }

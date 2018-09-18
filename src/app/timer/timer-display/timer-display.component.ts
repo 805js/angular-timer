@@ -6,7 +6,7 @@ import { TimerService } from './../timer.service';
   templateUrl: './timer-display.component.html',
   styleUrls: ['./timer-display.component.scss']
 })
-export class TimerDisplayComponent implements OnInit {
+export class TimerDisplayComponent {
   currentTime;
   constructor(private timerService: TimerService) {
     timerService.time.subscribe(newTime => {
@@ -15,8 +15,4 @@ export class TimerDisplayComponent implements OnInit {
   }
 
   @HostBinding('class.timer-display') true;
-
-  ngOnInit() {
-  }
-
 }
