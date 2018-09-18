@@ -5,16 +5,24 @@ import { TimerService } from './timer.service';
   selector: 'app-timer',
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss'],
-  providers: [TimerService]
+  providers: [TimerService],
 })
 export class TimerComponent implements OnInit {
+  @HostBinding('class.running') running = false;
+  @HostBinding('class.added-flash') addedFlash = false;
+
   constructor(private timerService: TimerService) {
-    timerService.running.subscribe(runningChange => {
+    this.timerService.running.subscribe(runningChange => {
       this.running = runningChange;
     });
+    timerService.timeListChange.subscribe(change => {
+      const vm = this;
+      this.addedFlash = true;
+      setTimeout(function() {
+        vm.addedFlash = false;
+      }, 100);
+    });
   }
-
-  @HostBinding('class.running') running = false;
 
   ngOnInit() {
   }

@@ -1,0 +1,36 @@
+:host {
+    @keyframes borderFlash {
+        from {
+            border-color: hsla(120, 50%, 50%, 0.5);
+        }
+        50% {
+            border-color: hsla(60, 100%, 50%, 0.9);
+        }
+    }
+
+    font-weight: bold;
+    min-width: 600px;
+    width: 75vw;
+    height: 75vh;
+    border: 2rem solid hsla(170, 5%, 50%, 0.5);
+    background-color: hsla(175, 50%, 95%, 0.6);
+
+    // centering
+    margin: auto;
+
+    /* layout */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: auto;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 4%;
+    grid-column-gap: 4%;
+
+    &.running {
+        border-color: hsla(120, 50%, 50%, 0.5);
+    }
+    &.added-flash {
+        border-color: hsla(60, 100%, 50%, 0.9);
+        animation: borderFlash 50ms ease-in-out;
+    }
+}

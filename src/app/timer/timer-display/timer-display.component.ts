@@ -1,5 +1,5 @@
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { TimerService } from './../timer.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-timer-display',
@@ -13,6 +13,8 @@ export class TimerDisplayComponent implements OnInit {
       this.currentTime = newTime;
     });
   }
+
+  @HostBinding('class.timer-display') true;
 
   ngOnInit() {
   }

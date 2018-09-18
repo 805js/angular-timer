@@ -1,0 +1,29 @@
+:host {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    overflow-y: scroll;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        
+    }
+    
+    li {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        list-style-type: none;
+        line-height: 3.5rem;
+        font-size: 2.5rem;
+
+        &:nth-child(odd) {
+            background: hsla(0, 5%, 25%, 0.55);
+        }
+        &:nth-child(even) {
+            background: hsla(180, 5%, 75%, 0.55);
+        }
+    }
+}

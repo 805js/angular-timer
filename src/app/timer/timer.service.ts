@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable()
 export class TimerService {
+  private _timeListChange: Subject<boolean> = new Subject();
   private recordedTimes: Set<number> = new Set();
   private _recordedTimeStream: BehaviorSubject<Set<number>> = new BehaviorSubject(this.recordedTimes);
   private timeCalculation;
@@ -40,6 +41,9 @@ export class TimerService {
     this.timeCalculation = null;
   }
   public markTime(): void {
+    if (!this.recordedTimes.has(this._time)) {
+      this._timeListChange.next(true);
+    }
     this.recordedTimes.add(this._time);
   }
   resetTimer(): void {
@@ -52,4 +56,10 @@ export class TimerService {
   public get recordedTimeStream(): Observable<Set<number>> {
     return this._recordedTimeStream.asObservable();
   }
+
+  public get timeListChange(): Observable<boolean> {
+    return this._timeListChange.asObservable();
+  }
+
+
 }
